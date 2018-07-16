@@ -1,6 +1,9 @@
 # flutter_wordcamp
 
-A new Flutter application.
+A new Wordcamp Demo Application on Flutter.
+
+##Screenshot
+![Alt text](/flutter-wordpress-screenshot.png?raw=true "Home Screen")
 
 ## Getting Started
 
