@@ -54,7 +54,7 @@ class MyHomeState extends State<MyHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("WPKANPUR-2018 "),
+        title: Text("WCKANPUR-2018 "),
         backgroundColor: Colors.redAccent,
       ),
       body: ListView.builder(
