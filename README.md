@@ -1,6 +1,6 @@
-# flutter_wordcamp
+# flutter_wordcamp Kanpur-2018
 
-A new Wordcamp Demo Application on Flutter.
+A new Wordcamp Kanpur Demo Application on Flutter.
 
 ## Screenshot
 
