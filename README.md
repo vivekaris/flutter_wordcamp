@@ -2,7 +2,8 @@
 
 A new Wordcamp Demo Application on Flutter.
 
-##Screenshot
+## Screenshot
+
 ![Alt text](/flutter-wordpress-screenshot.png?raw=true "Home Screen")
 
 ## Getting Started
