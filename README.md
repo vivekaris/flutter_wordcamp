@@ -3,8 +3,9 @@
 A new Wordcamp Kanpur Demo Application on Flutter.
 
 ## Screenshot
+![Alt text](/android_fluttershot.png?raw=true "android Home Screen")
 
-![Alt text](/flutter-wordpress-screenshot.png?raw=true "Home Screen")
+![Alt text](/flutter-wordpress-screenshot.png?raw=true "ios Home Screen")
 
 ## Getting Started
 
