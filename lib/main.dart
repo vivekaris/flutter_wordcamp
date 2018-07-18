@@ -56,6 +56,20 @@ class MyHomeState extends State<MyHome> {
       appBar: AppBar(
         title: Text("WCKANPUR-2018 "),
         backgroundColor: Colors.redAccent,
+          actions: <Widget>[
+            new IconButton( // action button
+              icon: new Icon(Icons.directions_car),
+              onPressed: () {
+                print("direction")
+              },
+            ),
+            new IconButton( // action button
+              icon: new Icon(Icons.add_alert),
+              onPressed: () {
+                print("updates")
+              },
+            ),
+          ]
       ),
       body: ListView.builder(
         itemCount: posts == null ? 0 : posts.length,
@@ -79,11 +93,12 @@ class MyHomeState extends State<MyHome> {
                       padding: EdgeInsets.all(10.0),
                       child: new ListTile(
                         title: new Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10.0),
+                            padding: EdgeInsets.symmetric(vertical: 8.0),
                             child: new Text(
                               posts[index]["title"]["rendered"],
-                              textAlign: TextAlign.justify,
-                              style: new TextStyle(fontSize: 20.0),
+                              // textAlign: TextAlign.justify,
+                              style: new TextStyle(
+                                  fontSize: 17.0, fontWeight: FontWeight.bold),
                             )),
                         subtitle: new Text(
                           posts[index]["content"]["rendered"]
