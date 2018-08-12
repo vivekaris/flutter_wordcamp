@@ -3,13 +3,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:transparent_image/transparent_image.dart';
+import 'package:flutter_html_view/flutter_html_view.dart';
 
 void main() {
-  /* runApp(MaterialApp(
-      home: MyHome(),
 
-  ));
-*/
   runApp(new MaterialApp(
       home: new MyHome(),
       debugShowCheckedModeBanner: false,
@@ -24,15 +21,20 @@ class MyHome extends StatefulWidget {
 }
 
 class MyHomeState extends State<MyHome> {
-  // Base URL for our wordpress API
-  final String apiUrl = "https://2018.kanpur.wordcamp.org/wp-json/wp/v2/";
+  // Base URL for your wordpress site
+  final String Url = "https://2018.kanpur.wordcamp.org/";
 
+  //api
+  final String api = "wp-json/wp/v2/";
   // Empty list for our posts
+
+  //appTitle
+  final String appTitle = "WCKANPUR-2018 ";
   List posts;
 
   // Function to fetch list of posts
   Future<String> getPosts() async {
-    var res = await http.get(Uri.encodeFull(apiUrl + "posts?_embed"),
+    var res = await http.get(Uri.encodeFull(Url + api + "posts?_embed"),
         headers: {"Accept": "application/json"});
 
     // fill our posts list with results and update state
@@ -54,20 +56,19 @@ class MyHomeState extends State<MyHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("WCKANPUR-2018 "),
+          title: Text(appTitle),
         backgroundColor: Colors.redAccent,
           actions: <Widget>[
             new IconButton( // action button
               icon: new Icon(Icons.directions_car),
               onPressed: () {
-                print("direction")
+                print("direction");
               },
             ),
             new IconButton( // action button
               icon: new Icon(Icons.add_alert),
               onPressed: () {
-                print("updates coming...")
-
+                print("updates coming...");
               },
             ),
           ]
@@ -80,10 +81,6 @@ class MyHomeState extends State<MyHome> {
               Card(
                 child: Column(
                   children: <Widget>[
-                    //Center(child: LinearProgressIndicator()),
-                    //Center(child: CircularProgressIndicator()),
-
-                    //new Image.network(posts[index]["_embedded"]["wp:featuredmedia"][0]["source_url"]),
                     FadeInImage.memoryNetwork(
                       placeholder: kTransparentImage,
                       image: (posts[index]["_embedded"]["wp:featuredmedia"][0]
@@ -91,27 +88,21 @@ class MyHomeState extends State<MyHome> {
                     ),
 
                     new Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: new ListTile(
-                        title: new Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8.0),
-                            child: new Text(
-                              posts[index]["title"]["rendered"],
-                              // textAlign: TextAlign.justify,
-                              style: new TextStyle(
-                                  fontSize: 17.0, fontWeight: FontWeight.bold),
-                            )),
-                        subtitle: new Text(
-                          posts[index]["content"]["rendered"]
-                              .replaceAll(new RegExp(r'<[^>]+>'), ''),
-                          //filtering html elements using regular expression
-                          // posts[index]["excerpt"]["rendered"] //raw data
-                          textAlign: TextAlign.justify,
+                        padding: EdgeInsets.all(8.0),
+
+                        child: new Text(
+                          posts[index]["title"]["rendered"],
+                          // textAlign: TextAlign.justify,
                           style: new TextStyle(
-                              fontStyle: FontStyle.normal, fontSize: 14.0),
-                        ),
-                      ),
-                    )
+                              fontSize: 16.0, fontWeight: FontWeight.bold),
+                        )
+                    ),
+                    new Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: new HtmlView(
+                          data: posts[index]["content"]["rendered"]),
+                    ),
+
                   ],
                 ),
               )
@@ -119,6 +110,7 @@ class MyHomeState extends State<MyHome> {
           );
         },
       ),
+
     );
   }
 }
